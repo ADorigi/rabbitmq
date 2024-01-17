@@ -19,7 +19,7 @@ func TestPublishCTXByte(t *testing.T) {
 	rabbit.Configure()
 	rabbit.ConnectSocket()
 	rabbit.ConnectChannel()
-	rabbit.DeclareQueue()
+	rabbit.DeclareQueue("hello")
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()

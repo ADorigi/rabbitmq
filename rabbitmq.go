@@ -38,15 +38,15 @@ func (r *Rabbit) ConnectChannel() {
 
 }
 
-func (r *Rabbit) DeclareQueue() {
+func (r *Rabbit) DeclareQueue(queuename string) {
 
 	queue, err := r.Channel.QueueDeclare(
-		"hello", // name
-		false,   // durable
-		false,   // delete when unused
-		false,   // exclusive
-		false,   // no-wait
-		nil,     // arguments
+		queuename, // name
+		false,     // durable
+		false,     // delete when unused
+		false,     // exclusive
+		false,     // no-wait
+		nil,       // arguments
 	)
 	Must(err, "Failed to declare a queue")
 	log.Println("QueueDeclared")

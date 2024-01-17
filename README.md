@@ -37,7 +37,7 @@ func main() {
 	rabbit.Configure()
 	rabbit.ConnectSocket()
 	rabbit.ConnectChannel()
-	rabbit.DeclareQueue()
+	rabbit.DeclareQueue(<<queuename>>)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
@@ -55,9 +55,9 @@ func main() {
 
 <!-- 
 TODO:
-    - Remove dependecy on godotenv
-    - add argument to declarequeue for accepting queue name
-
+done- Remove dependecy on godotenv
+done- add argument to declarequeue for accepting queue name
+    - improve tests 
 
 My aim for this repo:
 - error code masking - the bad(but not ugly) side of go
