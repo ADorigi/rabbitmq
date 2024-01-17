@@ -5,7 +5,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/joho/godotenv"
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 
@@ -16,10 +15,6 @@ func NewRabbit() *Rabbit {
 }
 
 func (r *Rabbit) Configure() {
-
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file")
-	}
 
 	r.Endpoint = os.Getenv("RABBIT_ENDPOINT")
 	r.Port = os.Getenv("RABBIT_AMQP_PROTOCOL")
