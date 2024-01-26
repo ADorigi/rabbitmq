@@ -16,7 +16,7 @@ func NewRabbit() *Rabbit {
 
 func (r *Rabbit) Configure() {
 
-	r.Endpoint = os.Getenv("RABBIT_ENDPOINT")
+	r.Endpoint = "amqp://" + os.Getenv("RABBIT_USERNAME") + ":" + os.Getenv("RABBIT_PASSWORD") + "@" + os.Getenv("RABBIT_URL") + ":"
 	r.Port = os.Getenv("RABBIT_AMQP_PROTOCOL")
 }
 
