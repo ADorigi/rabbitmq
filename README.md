@@ -1,5 +1,6 @@
 # rabbitmq
-rabbitmq wrapper library in go
+Rabbitmq wrapper library in Go.  
+Protocols supported: `AMQP`
 
 # How to Use
 
@@ -15,7 +16,9 @@ go get -u github.com/adorigi/rabbitmq
 Make these two environment variables accessible to your go executable.
 
 ```
-RABBIT_ENDPOINT="amqp://<<username>>:<<password>>@<<hostname>>:"
+RABBIT_USERNAME="<<username for rabbitmq cluster access>"
+RABBIT_PASSWORD="<<password for rabbitmq cluster access>>"
+RABBIT_URL="<<endpoint for rabbitmq cluster>>"
 RABBIT_AMQP_PROTOCOL="<<port>>"
 ```
 

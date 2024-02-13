@@ -2,6 +2,7 @@ package rabbitmq
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -16,7 +17,12 @@ func NewRabbit() *Rabbit {
 
 func (r *Rabbit) Configure() {
 
-	r.Endpoint = "amqp://" + os.Getenv("RABBIT_USERNAME") + ":" + os.Getenv("RABBIT_PASSWORD") + "@" + os.Getenv("RABBIT_URL") + ":"
+	r.Endpoint = fmt.Sprintf(
+		"amqp://%s:%s@%s:",
+		os.Getenv("RABBIT_USERNAME"),
+		os.Getenv("RABBIT_PASSWORD"),
+		os.Getenv("RABBIT_URL"),
+	)
 	r.Port = os.Getenv("RABBIT_AMQP_PROTOCOL")
 }
 
@@ -66,7 +72,7 @@ func (r *Rabbit) PublishCTXByte(ctx context.Context, data []byte) {
 			Body:        data,
 		})
 	Must(err, "Failed to publish the message")
-	log.Printf(" [x] Sent %s\n", string(data))
+	log.Printf("Message sent to queue successfully")
 
 }
 
